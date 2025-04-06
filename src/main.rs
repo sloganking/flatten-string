@@ -54,7 +54,10 @@ fn remove_newlines_and_paste() -> Result<()> {
     // 4. Remove newlines
     //    Replace both Windows (\r\n) and Unix (\n) newlines.
     //    Replacing \r and \n individually covers both cases.
-    let modified_text = original_text.replace('\r', "").replace('\n', " "); // Replace newline with a space
+    let modified_text = original_text
+        .replace('\r', "")
+        .replace("-\n", "")
+        .replace('\n', " "); // Replace newline with a space
     println!(
         "Removed newlines. Result (first 100): {:.100}...",
         modified_text
